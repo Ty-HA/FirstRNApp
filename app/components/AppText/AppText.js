@@ -4,9 +4,9 @@ import colors from '../../config/colors';
 
 import styles from './styles';
 
-function AppText({children}) {
+function AppText({children, style}) {
     return (
-        <Text style={styles.text}>
+        <Text style={[styles.text, style]}>
             {children}
         </Text>
     );

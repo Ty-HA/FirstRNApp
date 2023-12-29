@@ -5,7 +5,7 @@ import colors from '../../config/colors';
 const styles = StyleSheet.create({
     text: {
         color: colors.textPrimary,
-        fontWeight: "bold",
+        fontWeight: '900',
         ...Platform.select({
             ios: {
                 fontSize: 36,

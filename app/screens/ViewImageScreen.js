@@ -1,69 +1,54 @@
-import {
-    
-    View,
-    SafeAreaView,
-    Image,
-    StyleSheet,
-    
-  } from 'react-native';
+import { View, SafeAreaView, Image, StyleSheet } from "react-native";
 
-  import colors from '../config/colors';
-  
-  
-  
-  export default function ViewImageScreen() {
-    
-  
-    return (
-      <SafeAreaView style={styles.container}>
+import colors from "../config/colors";
 
-      <Image 
-        source={require("../assets/carte1.png")} 
-        style={styles.image} 
-        resizeMode="contain"/>
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-           
-      <View style={styles.closeIcon}/>
-      <View style={styles.deleteIcon}/>     
+export default function ViewImageScreen() {
+  return (
+    <SafeAreaView style={styles.container}>
+      <Image
+        source={require("../assets/family/family-test.jpg")}
+        style={styles.image}
+        resizeMode="contain"
+      />
 
-
-        
-      
+      <MaterialCommunityIcons name="close" size={50} style={styles.closeIcon} />
+      <MaterialCommunityIcons
+        name="trash-can-outline"
+        size={50}
+        style={styles.deleteIcon}
+      />
     </SafeAreaView>
-   
+  );
+}
 
-  
-    );
-  }
-
-  const styles = StyleSheet.create({
-    closeIcon: {
-      width: 50,
-      height: 50,
-      backgroundColor: colors.primary,
-      position: "absolute",
-      top: 40,
-      left: 30,
-    },
-    container: {
-      flex: 1,
-      backgroundColor: colors.darkBlue,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    deleteIcon: {
-      width: 50,
-      height: 50,
-      backgroundColor: colors.secondary,
-      position: "absolute",
-      top: 40,
-      right: 30,
-    },
-    image: {
-      width:"100%",
-      height:"100%",
-      alignSelf:"center"
-    },
-    
-    
-  })
+const styles = StyleSheet.create({
+  closeIcon: {
+    color: colors.white,
+    width: 50,
+    height: 50,
+    position: "absolute",
+    top: 60,
+    left: 30,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: colors.darkBlue,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  deleteIcon: {
+    color: colors.white,
+    width: 50,
+    height: 50,
+    position: "absolute",
+    top: 60,
+    right: 30,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    alignSelf: "center",
+  },
+});

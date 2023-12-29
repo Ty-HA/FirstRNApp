@@ -2,15 +2,16 @@ import {
   View,
   Text,
   StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 
 import colors from "../config/colors";
 
-export default function Button({ title, color = colors.primary }) {
+export default function Button({ title, color = colors.primary, onPress }) {
   return (
-      <View style={[styles.button, { backgroundColor: color }]}>
+      <TouchableOpacity style={[styles.button, { backgroundColor: color }]} onPress={onPress}>
           <Text style={styles.text}>{title}</Text>
-      </View>
+      </TouchableOpacity>
   );
 }
 
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
       marginVertical: 5,
   },
   text: {
-      color: '#fff',
+      color: colors.white,
       fontSize: 18,
   },
 });

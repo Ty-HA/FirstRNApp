@@ -11,8 +11,6 @@ import colors from "../config/colors";
 
 import AppText from "../components/AppText";
 
-import { Entypo } from "@expo/vector-icons";
-
 import Button from "../components/Button";
 
 export default function WelcomeScreen(props) {
@@ -43,15 +41,8 @@ export default function WelcomeScreen(props) {
         </View>
       </View>
 
-      <View
-        style={{
-          position: "absolute",
-          top: "45%",
-          width: "100%",
-          alignItems: "center",
-        }}
-      >
-        <Button title="Login" />
+      <View style={styles.buttonsContainer}>
+        <Button title="Login" onPress={() => console.log("Tapped") }/>
         <Button title="Register" color={colors.secondary} />
       </View>
     </ImageBackground>
@@ -66,13 +57,11 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
 
-  loginButton: {
-    width: "100%",
-    height: 70,
-    backgroundColor: colors.primary,
-    borderRadius: 35,
-    borderWidth: 1,
-    borderColor: colors.buttonBorder,
+  buttonsContainer: {
+    position: "absolute",
+          top: "45%",
+          width: "100%",
+          alignItems: "center",
   },
 
   logo: {
@@ -86,12 +75,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  registerButton: {
-    width: "100%",
-    height: 70,
-    backgroundColor: colors.secondary,
-    borderRadius: 35,
-    borderWidth: 1,
-    borderColor: colors.buttonBorder,
-  },
 });

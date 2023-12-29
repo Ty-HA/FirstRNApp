@@ -1,43 +1,29 @@
-import {
-  View,
-  ImageBackground,
-  Text,
-  StyleSheet,
-  Image
-} from "react-native";
+import { View, ImageBackground, Text, StyleSheet, Image } from "react-native";
 
 import colors from "../config/colors";
-import AppText from "../components/AppText";
+import AppText from "../components/AppText/AppText";
 
-export default function FamilyCard(props) {
+export default function FamilyCard({ title, subTitle, image }) {
   return (
     <ImageBackground
       style={styles.background}
       source={require("../assets/family/family-background.png")}
     >
       <View style={styles.FamilyAvatarContainer}>
-        
-        <View style={styles.ellipse}>
-        <Image
-            source={require("../assets/family/family-test.jpg")}
-            style={styles.avatar}
-            resizeMode="stretch"
-          />
-          
+        <View style={styles.ellipseContainer}>
+          <View style={styles.ellipse}>
+            <Image source={image} style={styles.avatar} resizeMode="stretch" />
+          </View>
         </View>
 
         <View style={styles.family}>
-          <AppText>Marie & ludovic</AppText>
+          <AppText style={styles.title}>{title}</AppText>
 
-          <Text
-            style={{
-              color: colors.white,
-              fontSize: 24,
-              fontWeight: "bold",
-            }}
+          <AppText
+            style={styles.subTitle}
           >
-            Famille Bernard
-          </Text>
+            {subTitle}
+          </AppText>
         </View>
       </View>
     </ImageBackground>
@@ -62,17 +48,26 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 75,
-    transform: [
-      {scaleX: 2}
-    ],
+    transform: [{ scaleX: 2 }],
     overflow: "hidden",
-    justifyContent: 'center',
-    alignItems: 'center',
-    
+    justifyContent: "center",
+    alignItems: "center",
+
+    shadowColor: colors.darkBlue,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
+
+  ellipseContainer: {
+    shadowColor: colors.darkBlue,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
 
   family: {
-    marginTop: 10,
+    marginTop: 20,
     alignItems: "center",
   },
 
@@ -80,7 +75,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     position: "absolute",
-    top: 85,
+    top: 110,
     alignItems: "center",
+  },
+
+  subTitle: {
+    color: colors.white,
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+
+  title: {
+    color: colors.textPrimary,
+    fontSize: 36,
+    fontWeight: "bold",
   },
 });
