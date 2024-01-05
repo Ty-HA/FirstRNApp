@@ -1,6 +1,7 @@
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
-import TaskIcon from './TaskIcon';
+import { FlatList, View, StyleSheet, Image, TouchableOpacity, onPress } from 'react-native';
+
+import colors from '../config/colors';
 
 const taskIcons = [
   {
@@ -25,42 +26,64 @@ const taskIcons = [
   },
 ];
 
+const TaskIcon = ({ image, onPress }) => (
+    <View style={styles.imageContainer}>
+    <Image source={image} style={styles.image} onPress={onPress}/>
+  </View>
+);
+
 export default function TaskIconList() {
   return (
-    <View style={styles.container}>
-      <View style={styles.iconList}>
-        {taskIcons.map((taskIcon) => (
-          <View key={taskIcon.id} style={styles.iconContainer}>
-            <TaskIcon 
-              image={taskIcon.image} 
-              onPress={() => console.log("Task Icon pressed")}
-            />
-          </View>
-        ))}
-      </View>
-    </View>
+    <FlatList
+      style={styles.iconList}
+      data={taskIcons}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => (
+        <View style={styles.iconContainer}>
+            <TouchableOpacity onPress={onPress}>
+          <TaskIcon 
+            image={item.image} 
+            onPress={() => console.log("Task Icon pressed")}
+          />
+          </TouchableOpacity>
+        </View>
+      )}
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  iconList: {
+    flexDirection: "row",
+    width: "100%",
+    height: 130,
+    backgroundColor: colors.light,
     
   },
 
-  iconList: {
+  iconContainer: {
     flex: 1,
-    flexDirection: "row",
- 
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 5,
+    paddingRight: 5,
 
   },
 
-  iconContainer: {
+  image: {
+    width: 55,
+    height: 55, 
+  },
 
-    flex: 1,
-    marginRight: 90,
-    marginLeft: 20,
-   
-
-
+  imageContainer : {
+    left: 15,
+    width: 100,
+    height: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    borderRadius: 50,
   },
 });

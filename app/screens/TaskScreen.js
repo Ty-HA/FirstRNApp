@@ -58,7 +58,7 @@ function TaskScreen(props) {
               />
             </View>
           )}
-          contentContainerStyle={{ paddingTop: 250 }}
+          contentContainerStyle={{ paddingTop: 180 }}
         />
 
       </Screen>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
 
   iconList: {
-    paddingTop: 380,   
+    paddingTop: 320,   
 
   },
 });

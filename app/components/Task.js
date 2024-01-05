@@ -30,7 +30,7 @@ export default function Task({
               </View>
 
               <View style={styles.imageContainer}>
-                <Image source={image} style={styles.circle} />
+                <Image source={image} style={styles.image} />
               </View>
             </View>
           </View>
@@ -41,7 +41,7 @@ export default function Task({
 }
 
 const styles = StyleSheet.create({
-  circle: {
+  image: {
     width: 55,
     height: 55,
  
