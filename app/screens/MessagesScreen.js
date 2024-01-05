@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 
 // import ListItem from '../components/ListItem'; exemple du cours, liste de messages
@@ -23,15 +23,15 @@ const initialMessages = [
 ];
 
 function MessagesScreen(props) {
+  const [messages, setMessages] = useState(initialMessages);
+  const [refreshing, setRefreshing] = useState(false);
 
-    const [messages, setMessages] = useState(initialMessages);
-
-    const handleDelete = message => {
-        // Delete the message from messages
-        // call the server
-        console.log(message);
-        setMessages (messages.filter(m => m.id !== message.id));
-    }
+  const handleDelete = (message) => {
+    // Delete the message from messages
+    // call the server
+    console.log(message);
+    setMessages(messages.filter((m) => m.id !== message.id));
+  };
 
   return (
     <Screen>
@@ -45,12 +45,24 @@ function MessagesScreen(props) {
               subTitle={item.description}
               image={item.image}
               onPress={() => console.log("Message selected", item)}
-              renderRightActions={() => 
-                <ListItemDeleteAction onPress={() => handleDelete(item)}/>}
+              renderRightActions={() => (
+                <ListItemDeleteAction onPress={() => handleDelete(item)} />
+              )}
             />
           </View>
         )}
         ItemSeparatorComponent={ListItemSeparator}
+        refreshing={refreshing}
+        onRefresh={() => {
+          setMessages([
+            {
+              id: 2,
+              title: "Jessica",
+              description: "D2",
+              image: require("../assets/family/family-member2.png"),
+            },
+          ]);
+        }}
       />
     </Screen>
   );
