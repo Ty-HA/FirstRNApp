@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     position: "absolute",
-    top: 110,
+    top: 105,
     alignItems: "center",
   },
 

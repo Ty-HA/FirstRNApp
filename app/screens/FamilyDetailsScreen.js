@@ -1,72 +1,68 @@
 import { View, ImageBackground, Text, StyleSheet, Image } from "react-native";
 
-import { Ionicons } from '@expo/vector-icons'; 
+import { Ionicons } from "@expo/vector-icons";
 import colors from "../config/colors";
 import AppText from "../components/AppText/AppText";
 
 import FamilyCard from "../components/FamilyCard";
-// FamilyMembersList component to do later and import here
+
 import FamilyMembersList from "../components/FamilyMembersList";
 
-
-
+const member = [
+  {
+    id: 1,
+    title: "Evan",
+    description: "D1",
+    image: require("../assets/family/family-member1.png"),
+  },
+  {
+    id: 2,
+    title: "Jessica",
+    description: "D2",
+    image: require("../assets/family/family-member2.png"),
+  },
+  {
+    id: 3,
+    title: "Corentin",
+    description: "D3",
+    image: require("../assets/family/family-member3.png"),
+  },
+  {
+    id: 4,
+    title: "Lorie",
+    description: "D4",
+    image: require("../assets/family/family-member4.png"),
+  },
+];
 
 export default function FamilyDetailsScreen(props) {
   return (
     <View style={styles.container}>
-            <FamilyCard 
-    title="Marie & Ludovic"
-    subTitle="Famille Bernard"
-    image={require("../assets/family/family-test.jpg")}/>
-      
+      <FamilyCard
+        title="Marie & Ludovic"
+        subTitle="Famille Bernard"
+        image={require("../assets/family/family-test.jpg")}
+      />
+
       <View style={styles.FamilyListing}>
-      <Text style={styles.legend}><Text style={styles.italicText}>4</Text> members</Text>
+        <Text style={styles.title}>
+          <Text style={styles.italicText}>4</Text> members
+        </Text>
 
-      <View style={styles.familyContainer}>
-      <FamilyMembersList legend="Evan" image={require("../assets/family/family-member1.png")}/>
-      <FamilyMembersList legend="Jessica" image={require("../assets/family/family-member2.png")}/>
-      <FamilyMembersList legend="Corentin" image={require("../assets/family/family-member3.png")}/>
-      <FamilyMembersList legend="Lorie" image={require("../assets/family/family-member4.png")}/>
-      </View>
-        
-        {/* 
         <View style={styles.familyContainer}>
-
-          <View style={styles.circleContainer}>
-            <Image
-              source={require("../assets/family/family-member1.png")}
-              style={styles.circle}
-            />
-            <Text style={styles.legend}>Evan</Text>
-          </View>
-
-          <View style={styles.circleContainer}>
-            <Image
-              source={require("../assets/family/family-member2.png")}
-              style={styles.circle}
-            />
-            <Text style={styles.legend}>Jessica</Text>
-          </View>
-
-          <View style={styles.circleContainer}>
-            <Image
-              source={require("../assets/family/family-member3.png")}
-              style={styles.circle}
-            />
-            <Text style={styles.legend}>Corentin</Text>
-          </View>
-          <View style={styles.circleContainer}>
-            <Image
-              source={require("../assets/family/family-member4.png")}
-              style={styles.circle}
-            />
-            <Text style={styles.legend}>Lorie</Text>
-          </View>
+          {member.map((item) => (
+            <View style={{ width: "50%" }}>
+              <FamilyMembersList
+                key={item.id}
+                title={item.title}
+                image={item.image}
+              />
+            </View>
+          ))}
         </View>
-        */}
-        <Ionicons name="add-circle" size={54} color={colors.lightBlue} />
-      </View>      
-      
+
+        <Ionicons name="add-circle" size={70} color={colors.lightBlue} />
+      </View>
     </View>
   );
 }
@@ -79,7 +75,6 @@ const styles = StyleSheet.create({
   circleContainer: {
     width: "50%",
     alignItems: "center",
-    marginBottom: 20,
   },
 
   circle: {
@@ -90,29 +85,29 @@ const styles = StyleSheet.create({
   },
 
   familyContainer: {
+    flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-
-  FamilyListing: {
-    position: "absolute",
-    top: 400,
-    left: 0,
-    right: 0,
-    bottom: 0,
     justifyContent: "center",
     alignItems: "center",
   },
 
-  italicText: {
-    fontStyle: 'italic',
+  FamilyListing: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    top: 420,
   },
 
-  legend: {
-    color: colors.textPrimary,
-    fontWeight : "bold",
+  italicText: {
+    fontStyle: "italic",
+  },
+
+  title: {
+    color: colors.darkBlue,
+    fontWeight: "bold",
     fontSize: 16,
     marginTop: 3,
     marginBottom: 10,

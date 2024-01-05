@@ -2,7 +2,7 @@ import { View, SafeAreaView, Image, StyleSheet } from "react-native";
 
 import colors from "../config/colors";
 
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default function ViewImageScreen() {
   return (
@@ -15,7 +15,7 @@ export default function ViewImageScreen() {
 
       <MaterialCommunityIcons name="close" size={50} style={styles.closeIcon} />
       <MaterialCommunityIcons
-        name="trash-can-outline"
+        name="trash-can"
         size={50}
         style={styles.deleteIcon}
       />
